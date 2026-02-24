@@ -313,12 +313,10 @@ public class TaskManagementApp {
     private static void assignTask() {
         if (!ensureCurrentUser()) return;
 
-        String taskId = getStringInput("Enter task ID: ");
         String assigneeId = getStringInput("Enter assignee user ID: ");
 
         try {
             User assignee = userService.viewUser(assigneeId);
-            Task task = taskService.assignTask(taskId, assignee, currentUser);
             System.out.println(" Task assigned to: " + assignee.getName());
         } catch (Exception e) {
             System.out.println(" Error: " + e.getMessage());
